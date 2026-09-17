@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Represents a single chess piece
@@ -57,8 +58,22 @@ public class ChessPiece {
             case BISHOP -> new bishopMoves();
             case QUEEN -> new queenMoves();
             case KING -> new kingMoves();
+            case KNIGHT -> new knightMoves();
+            case PAWN -> new pawnMoves();
             default -> throw new RuntimeException("Not implemented: " + type);
         };
         return calculator.pieceMoves(board, myPosition);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ChessPiece other)) return false;
+        return pieceColor == other.pieceColor && type == other.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pieceColor, type);
     }
 }
