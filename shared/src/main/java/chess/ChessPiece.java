@@ -54,6 +54,7 @@ public class ChessPiece {
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         moveCalculator calculator = switch (type) {
             case ROOK -> new rookMoves();
+            case BISHOP -> new bishopMoves();
             default -> throw new RuntimeException("Not implemented: " + type);
         };
         return calculator.pieceMoves(board, myPosition);
