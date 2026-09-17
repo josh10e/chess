@@ -56,6 +56,7 @@ public class ChessPiece {
             case ROOK -> new rookMoves();
             case BISHOP -> new bishopMoves();
             case QUEEN -> new queenMoves();
+            case KING -> new kingMoves();
             default -> throw new RuntimeException("Not implemented: " + type);
         };
         return calculator.pieceMoves(board, myPosition);
